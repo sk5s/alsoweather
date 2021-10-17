@@ -1,0 +1,21 @@
+{
+    "news" : 
+[
+    
+    {
+    "title": "歡迎來到alsoweather",
+    "link" : "https://youtube.com",
+    "permalink" : "http://example.org/news/2021-09-27-welcome-to-alsoweather/index.json",
+    "content" : "哈囉！歡迎來到alsoweather"
+}
+    
+    , {
+    "title": "alsoweather project open now",
+    "link" : "https://youtube.com",
+    "permalink" : "http://example.org/news/2021-09-24-alsoweather-starting-now/index.json",
+    "content" : "alsoweather"
+}
+    
+]
+
+}

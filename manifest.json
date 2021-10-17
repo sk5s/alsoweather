@@ -1,0 +1,18 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "alsoweather",
+  "orientation": "any",
+  "scope": "/alsoweather/",
+  "short_name": "weather",
+  "start_url": "/alsoweather/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

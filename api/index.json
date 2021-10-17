@@ -1,0 +1,14 @@
+{
+    "news" : 
+[
+    
+    {
+    "title": "News",
+    "link" : "<no value>",
+    "permalink" : "http://example.org/news/index.json",
+    "content" : ""
+}
+    
+]
+
+}

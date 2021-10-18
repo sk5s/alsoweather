@@ -1,9 +1,9 @@
 # alsoweather 
 
-![](https://img.shields.io/github/v/release/sk5s/alsoweather)
-![](https://img.shields.io/github/last-commit/sk5s/alsoweather)
-![](https://img.shields.io/github/license/sk5s/alsoweather)
-![](https://img.shields.io/github/languages/top/sk5s/alsoweather)
+![](https://img.shields.io/github/v/release/sk5s/alsoweather?style=for-the-badge)
+![](https://img.shields.io/github/last-commit/sk5s/alsoweather?style=for-the-badge)
+![](https://img.shields.io/github/license/sk5s/alsoweather?style=for-the-badge)
+![](https://img.shields.io/github/languages/top/sk5s/alsoweather?style=for-the-badge)
 
 <img src="https://rzxbsbriajkqxdsmxvev.supabase.in/storage/v1/object/public/image/icon.png" alt="Icons made by iconixar from www.flaticon.com" style="width:80px">
 

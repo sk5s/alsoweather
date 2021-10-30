@@ -7,13 +7,31 @@ const CWB_API = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?A
 // api url
 const QUOTE_API = `https://api.quotable.io/random`
 
-cwb_location_select_value = ''
+// accept speech lang (lower case)
+let accept_speech_lang = ['zh-TW', 'en-US']
+
+// variable to replace by javascript
+let cwb_location_select_value = ''
+let stored_speech_voice = ''
+
+let voices = []
+let available_and_accept_speech_voice = []
+let speech_script = {
+  'zh-TW': '',
+  'en-US': '',
+}
+
+let populated_voice_select //html object
 
 // grab html dom element
 let cwb_location_select = document.getElementById('cwb_location_select')
 let quote_block_inner_content = document.getElementById('quote_block_inner_content')
 let weather_block_inner_content = document.getElementById('weather_block_inner_content')
+let weather_chart_inner_content = document.getElementById('weather_chart_inner_content')
 let speechSynthesis_container = document.getElementById('speechSynthesis_container')
+let speechSynthesis_config_container = document.getElementById('speechSynthesis_config_container')
+
+let weather_chart_canvas = document.getElementById('weather_chart_canvas')
 
 // event
 cwb_location_select.addEventListener('input', location_input_service)
@@ -21,8 +39,9 @@ cwb_location_select.addEventListener('input', location_input_service)
 // init
 document.addEventListener('DOMContentLoaded', () => {
   restore_location()
+  restore_speech_voice()
   fresh()
-  // speech_synthesis_init()
+  speech_synthesis_init()
 })
 
 // fetch cwb api
@@ -51,6 +70,7 @@ async function fetch_cwb(url) {
         let parsed_cwb_data = {
           now: {},
         }
+        // now
         parsed_cwb_data.now.Wx =
           data_all.data[data_all.location_index].weatherElement[0].time[0].parameter.parameterName
         parsed_cwb_data.now.PoP =
@@ -61,10 +81,13 @@ async function fetch_cwb(url) {
           data_all.data[data_all.location_index].weatherElement[3].time[0].parameter.parameterName
         parsed_cwb_data.now.MaxT =
           data_all.data[data_all.location_index].weatherElement[4].time[0].parameter.parameterName
+        // 3day
+        generate_weather_chart_data(data_all.data[data_all.location_index].weatherElement)
         fillin_weather(generate_now_weather(parsed_cwb_data.now))
+        generate_now_weather_speech_script(parsed_cwb_data.now)
       })
   } catch (error) {
-    alert(error.message)
+    console.log(error)
   }
 }
 
@@ -115,6 +138,16 @@ function restore_location() {
   }
 }
 
+// restore location
+function restore_speech_voice() {
+  let data = localStorage.getItem('speechVoice')
+  if (data) {
+    stored_speech_voice = data
+  } else {
+    stored_speech_voice = ''
+  }
+}
+
 // fresh and refresh
 function fresh() {
   fetch_cwb(CWB_API)
@@ -145,6 +178,111 @@ function all_content_switch_to_loading() {
   <div class="skeleton skeleton-text"></div>
   <div class="skeleton skeleton-text"></div>
   `
+}
+
+// speech
+function speech_synthesis_init() {
+  const speech = window.speechSynthesis
+  if (speech.onvoiceschanged !== undefined) {
+    speech.onvoiceschanged = () => populateVoiceList()
+  }
+}
+
+function populateVoiceList() {
+  speechSynthesis_config_container.innerHTML = ''
+  let synth = window.speechSynthesis
+  voices = synth.getVoices()
+  if (!voices) return
+
+  let div = document.createElement('select')
+  available_and_accept_speech_voice = []
+
+  for (let i = 0; i < voices.length; i++) {
+    let option = document.createElement('option')
+    if (accept_speech_lang.includes(voices[i].lang)) {
+      available_and_accept_speech_voice.push(voices[i])
+    }
+  }
+
+  if (!available_and_accept_speech_voice) return
+
+  for (let i = 0; i < available_and_accept_speech_voice.length; i++) {
+    let option = document.createElement('option')
+    let voices = available_and_accept_speech_voice
+    option.textContent = voices[i].name + ' - ' + voices[i].lang
+
+    option.value = voices[i].name
+    option.setAttribute('data-lang', voices[i].lang)
+    option.setAttribute('data-name', voices[i].name)
+    if (stored_speech_voice) {
+      if (voices[i].name == stored_speech_voice) {
+        option.setAttribute('selected', true)
+      }
+    }
+    console.log('append')
+    div.appendChild(option)
+  }
+
+  // fill in read button
+  speechSynthesis_container.innerHTML = generate_read_button_html()
+
+  speechSynthesis_config_container.innerHTML += `
+<div class="control has-icons-left mt-3 mb-3">
+  <div class="select is-large is-fullwidth">
+    <select id="populated_voice_select">
+      ${div.innerHTML}
+    </select>
+  </div>
+  <div class="icon is-large is-left">
+    <i class="fas fa-volume-up"></i>
+  </div>
+</div>
+  `
+  populated_voice_select = document.getElementById('populated_voice_select')
+  populated_voice_select.addEventListener('input', () => {
+    localStorage.setItem('speechVoice', populated_voice_select.value)
+    stored_speech_voice = populated_voice_select.value
+  })
+}
+// use now weather state object to generate html code
+function generate_now_weather_speech_script(nowstate) {
+  speech_script[
+    'zh-TW'
+  ] = `今天天氣${nowstate.CI}、${nowstate.Wx}，最高溫度維${nowstate.MaxT}度C，最低溫度維${nowstate.MinT}度C，降雨機率${nowstate.PoP}趴。`
+  speech_script[
+    'en-US'
+  ] = `Today's High Temperature is ${nowstate.MaxT} Celsius, Low Temperature is${nowstate.MinT}Celsius, probability of precipitation is ${nowstate.PoP} percent`
+}
+
+function read_now_weather() {
+  if (!populated_voice_select || !speech_script || !stored_speech_voice) return
+  msg = speech_script
+  voices = available_and_accept_speech_voice
+  let speech = new SpeechSynthesisUtterance()
+  let lang = ''
+  for (let i = 0; i < voices.length; i++) {
+    if (voices[i].name == stored_speech_voice) {
+      speech.voice = voices[i]
+      if (voices[i].name.includes('Chinese')) {
+        lang = 'zh-TW'
+      } else {
+        lang = 'en-US'
+      }
+    }
+  }
+  speech.lang = lang
+  speech.text = msg[lang]
+  speech.volume = 1
+  speech.rate = 1.1
+  speech.pitch = 1
+  stop_speech_if_speaking()
+  window.speechSynthesis.speak(speech)
+}
+
+function stop_speech_if_speaking() {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel()
+  }
 }
 
 // generate
@@ -198,6 +336,20 @@ function generate_now_weather(nowstate) {
   </div>
   `
   return div
+}
+function generate_read_button_html() {
+  return `
+  <div class="columns">
+    <div class="column">
+      <button class="button is-success is-outlined is-large is-fullwidth" onClick="read_now_weather()">
+        <span class="icon is-small">
+          <i class="fas fa-book-reader"></i>
+        </span>
+        <span class="ml-3">Read</span>
+      </button>
+    </div>
+  </div>
+  `
 }
 
 // fill in

@@ -24,3 +24,8 @@
     background-color: hsl(200, 20%, 95%);
   }
 }
+
+canvas {
+  width: 100%;
+  position: relative;
+}

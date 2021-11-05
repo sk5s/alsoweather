@@ -24,6 +24,7 @@ let speech_script = {
 let populated_voice_select //html object
 
 // grab html dom element
+let html = document.getElementById('html')
 let cwb_location_select = document.getElementById('cwb_location_select')
 let quote_block_inner_content = document.getElementById('quote_block_inner_content')
 let weather_block_inner_content = document.getElementById('weather_block_inner_content')
@@ -42,7 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
   restore_speech_voice()
   fresh()
   speech_synthesis_init()
+  i18n_init()
 })
+
+// html changed service
+function html_changed() {
+  i18n_refresh()
+}
 
 // fetch cwb api
 async function fetch_cwb(url) {
@@ -152,32 +159,24 @@ function restore_speech_voice() {
 function fresh() {
   fetch_cwb(CWB_API)
   fetch_quote(QUOTE_API)
+  fresh_location_text()
 }
 function refresh_all() {
   // set loading class
   all_content_switch_to_loading()
   fresh()
 }
+function fresh_location_text() {
+  let element = document.querySelector("[data-fillin-text='cwb_location_select_value']")
+  element.innerText = cwb_location_select_value
+}
 
 // switch loading
 function all_content_switch_to_loading() {
   cwb_location_select.parentElement.classList.add('is-loading')
-  weather_block_inner_content.innerHTML = `
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  `
-  quote_block_inner_content.innerHTML = `
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  <div class="skeleton skeleton-text"></div>
-  `
+  weather_block_inner_content.innerHTML = generate_skeleton_html(7)
+  quote_block_inner_content.innerHTML = generate_skeleton_html(5)
+  html_changed()
 }
 
 // speech
@@ -238,6 +237,7 @@ function populateVoiceList() {
   </div>
 </div>
   `
+  html_changed()
   populated_voice_select = document.getElementById('populated_voice_select')
   populated_voice_select.addEventListener('input', () => {
     localStorage.setItem('speechVoice', populated_voice_select.value)
@@ -307,19 +307,19 @@ function generate_now_weather(nowstate) {
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">降雨機率</p>
+        <p class="heading" data-i18n-key="PoP">降雨機率</p>
         <p class="title"><i class="fas fa-cloud-showers-heavy"></i> ${nowstate.PoP}%</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">最低溫度</p>
+        <p class="heading" data-i18n-key="MinT">最低溫度</p>
         <p class="title"><i class="fas fa-chevron-down"></i> ${nowstate.MinT}°C</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">最高溫度</p>
+        <p class="heading" data-i18n-key="MaxT">最高溫度</p>
         <p class="title"><i class="fas fa-chevron-up"></i> ${nowstate.MaxT}°C</p>
       </div>
     </div>
@@ -335,6 +335,7 @@ function generate_now_weather(nowstate) {
     </div>
   </div>
   `
+  html_changed()
   return div
 }
 function generate_read_button_html() {
@@ -345,11 +346,19 @@ function generate_read_button_html() {
         <span class="icon is-small">
           <i class="fas fa-book-reader"></i>
         </span>
-        <span class="ml-3">Read</span>
+        <span class="ml-3" data-i18n-key="read">Read</span>
       </button>
     </div>
   </div>
   `
+}
+
+function generate_skeleton_html(line) {
+  let html = ''
+  for (let i = 0; i < line; i++) {
+    html += `<div class="skeleton skeleton-text"></div>`
+  }
+  return html
 }
 
 // fill in
@@ -358,6 +367,7 @@ function generate_read_button_html() {
 function fillin_quote(data_element) {
   quote_block_inner_content.innerHTML = `<span class="is-large">${data_element.content}</span>`
   quote_block_inner_content.innerHTML += `<br><span class="has-text-grey">- ${data_element.author}</span>`
+  html_changed()
 }
 
 // fillin_weather
@@ -369,6 +379,22 @@ function fillin_weather(element) {
 
 // fillin_location_select_options
 function fillin_location_select_options(html) {
-  cwb_location_select.innerHTML = "<option value='' disabled selected>選擇地區</option>"
+  cwb_location_select.innerHTML = `<option value="" data-i18n-key="choose-location" disabled selected>choose location</option>`
   cwb_location_select.innerHTML += html
+  html_changed()
+}
+
+// config modal
+function open_modal(buttonElement) {
+  let modal_to_toggle = buttonElement.getAttribute('data-modal-to-open')
+  let modal = document.querySelector(`[data-modal-name='${modal_to_toggle}']`)
+  modal.classList.add('is-active')
+  html.classList.add('is-clipped')
+}
+
+function close_modal(buttonElement) {
+  let modal_to_toggle = buttonElement.getAttribute('data-modal-to-close')
+  let modal = document.querySelector(`[data-modal-name='${modal_to_toggle}']`)
+  modal.classList.remove('is-active')
+  html.classList.remove('is-clipped')
 }

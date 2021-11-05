@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" class="has-navbar-fixed-top">
+<html id="html" lang="zh" class="has-navbar-fixed-top">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/chart.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script> -->
+
+  <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
 </head>
 <body>
   <!-- nav bar -->
@@ -29,23 +30,14 @@
 
   <!-- main content -->
   <div class="container mt-3">
-    <div class="control has-icons-left mt-3 mb-3">
-      <div class="select is-large is-fullwidth">
-        <select id="cwb_location_select">
-          <option value="" disabled selected>選擇地區</option>
-        </select>
-      </div>
-      <div class="icon is-large is-left">
-        <i class="fas fa-map-marker-alt"></i>
-      </div>
-    </div>
+    <h2 class="title is-2" data-fillin-text="cwb_location_select_value">location</h2>
 
     <!-- refresh button -->
     <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="refresh_all()">
       <span class="icon is-small">
         <i class="fas fa-sync"></i>
       </span>
-      <span class="ml-3">Refresh</span>
+      <span class="ml-3" data-i18n-key="refresh">Refresh</span>
     </button>
 
     <!-- SpeechSynthesis button -->
@@ -83,8 +75,8 @@
         <span class="card-header-icon">
           <i class="fas fa-angle-double-right"></i>
         </span>
-        <span class="card-header-title" style="text-transform:uppercase;">
-          quote
+        <span class="card-header-title" data-i18n-key="quote">
+          Quote
         </span>
       </div>
       <div class="card-content">
@@ -100,10 +92,47 @@
       </div>
     </div>
 
+    <div>
+      <!-- open config button -->
+      <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="open_modal(this)" data-modal-to-open="config">
+        <span class="icon is-small">
+          <i class="fas fa-cog"></i>
+        </span>
+        <span data-i18n-key="config" class="ml-3">Config</span>
+      </button>
+    </div>
 
-    <!-- SpeechSynthesis config -->
-    <div id="speechSynthesis_config_container"></div>
+  </div>
 
+
+  <!-- modal -->
+  <!-- config modal -->
+  <div data-modal-name="config" class="modal">
+    <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="config"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" data-i18n-key="config">Config</p>
+        <button class="delete" aria-label="close" onclick="close_modal(this)" data-modal-to-close="config"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- location -->
+        <div class="control has-icons-left mt-3 mb-3">
+          <div class="select is-large is-fullwidth">
+            <select id="cwb_location_select">
+              <option value="" data-i18n-key="choose-location" disabled selected>choose location</option>
+            </select>
+          </div>
+          <div class="icon is-large is-left">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+        <!-- SpeechSynthesis config -->
+        <div id="speechSynthesis_config_container"></div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" onclick="close_modal(this)" data-modal-to-close="config" data-i18n-key="close">Close</button>
+      </footer>
+    </div>
   </div>
 
   <!-- footer -->

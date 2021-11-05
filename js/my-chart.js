@@ -9,11 +9,12 @@ const CHART_COLORS = {
   purple: 'rgb(153, 102, 255)',
   grey: 'rgb(201, 203, 207)',
 }
+const line_chart_border_width = 7
 
 function generate_weather_chart_data(weatherElement) {
   const time = (str) => {
     let m = new Date(str)
-    let dateString = `${m.getUTCMonth() + 1}/${m.getUTCDate()} ${m.getUTCHours()}點`
+    let dateString = `${m.getUTCMonth() + 1}/${m.getUTCDate()} ${m.getUTCHours()}${i18n_get('o_clock')}`
     return dateString
   }
 
@@ -39,7 +40,7 @@ function generate_weather_chart_data(weatherElement) {
     }
   }
   for (let y = 0; y < data.length - 1; y++) {
-    labels.push([`${data[y]} -`, data[y + 1]])
+    labels.push([`${data[y]} ${i18n_get('to')}`, data[y + 1]])
   }
 
   for (let i = 0; i < weatherElement.length; i++) {
@@ -52,6 +53,7 @@ function generate_weather_chart_data(weatherElement) {
           label: '最大溫度',
           data: [],
           borderColor: CHART_COLORS.red,
+          borderWidth: line_chart_border_width,
         },
       ]
       for (let n = 0; n < weatherElement[i].time.length; n++) {
@@ -67,6 +69,7 @@ function generate_weather_chart_data(weatherElement) {
           label: '最小溫度',
           data: [],
           borderColor: CHART_COLORS.blue,
+          borderWidth: line_chart_border_width,
         },
       ]
       for (let n = 0; n < weatherElement[i].time.length; n++) {

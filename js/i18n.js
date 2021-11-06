@@ -27,7 +27,7 @@ let i18n_resources = {
       'choose-voice': '選擇聲音',
       close: '關閉',
       quote: '佳句',
-      read: '閱讀',
+      read: '讀出天氣',
       PoP: '降雨機率',
       MinT: '最低溫度',
       MaxT: '最高溫度',

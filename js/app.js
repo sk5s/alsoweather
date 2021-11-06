@@ -1,7 +1,8 @@
 // declare keys
 
 // api key
-const CWB_KEY = 'CWB-1485B01A-7416-4E72-8ABB-E351980FD554'
+// now in key.js
+
 // api url
 const CWB_API = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${CWB_KEY}&format=JSON`
 // api url
@@ -147,6 +148,21 @@ function lang_input_service() {
   i18n_change(user_selected_lang)
   i18n_refresh()
   refresh_all()
+}
+
+function click_read_button_service() {
+  if (window.speechSynthesis.speaking) {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume()
+      console.log('resume')
+    } else {
+      window.speechSynthesis.pause()
+      console.log('paused')
+    }
+  } else {
+    read_now_weather()
+    console.log('read now')
+  }
 }
 
 // restore location
@@ -361,19 +377,19 @@ function generate_now_weather(nowstate) {
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading" data-i18n-key="PoP">降雨機率</p>
+        <p class="heading" data-i18n-key="PoP">${i18n_get('PoP')}</p>
         <p class="title"><i class="fas fa-cloud-showers-heavy"></i> ${nowstate.PoP}%</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading" data-i18n-key="MaxT">最高溫度</p>
+        <p class="heading" data-i18n-key="MaxT">${i18n_get('MaxT')}</p>
         <p class="title"><i class="fas fa-chevron-up"></i> ${nowstate.MaxT}°C</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading" data-i18n-key="MinT">最低溫度</p>
+        <p class="heading" data-i18n-key="MinT">${i18n_get('MinT')}</p>
         <p class="title"><i class="fas fa-chevron-down"></i> ${nowstate.MinT}°C</p>
       </div>
     </div>
@@ -396,7 +412,7 @@ function generate_read_button_html() {
   return `
   <div class="columns">
     <div class="column">
-      <button class="button is-success is-outlined is-large is-fullwidth" onClick="read_now_weather()">
+      <button class="button is-success is-outlined is-large is-fullwidth" onClick="click_read_button_service()">
         <span class="icon is-small">
           <i class="fas fa-book-reader"></i>
         </span>
@@ -438,7 +454,7 @@ function fillin_location_select_options(html) {
   html_changed()
 }
 
-// config modal
+// modal control
 function open_modal(buttonElement) {
   let modal_to_toggle = buttonElement.getAttribute('data-modal-to-open')
   let modal = document.querySelector(`[data-modal-name='${modal_to_toggle}']`)

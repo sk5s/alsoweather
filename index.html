@@ -128,10 +128,32 @@
         </div>
         <!-- SpeechSynthesis config -->
         <div id="speechSynthesis_config_container"></div>
+        <!-- lang -->
+        <div class="control has-icons-left mt-3 mb-3">
+          <div class="select is-large is-fullwidth">
+            <select id="lang_select">
+              <option value="en">en</option>
+              <option value="zh-TW">zh-TW</option>
+            </select>
+          </div>
+          <div class="icon is-large is-left">
+            <i class="fas fa-language"></i>
+          </div>
+        </div>
       </section>
       <footer class="modal-card-foot">
         <button class="button" onclick="close_modal(this)" data-modal-to-close="config" data-i18n-key="close">Close</button>
       </footer>
+    </div>
+  </div>
+
+  <!-- prompt modal container -->
+  <div data-modal-name="prompt" class="modal">
+    <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="prompt"></div>
+    <div class="modal-card">
+      <section class="modal-card-body" id="prompt_modal_container">
+
+      </section>
     </div>
   </div>
 

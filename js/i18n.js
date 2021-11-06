@@ -3,9 +3,10 @@ let user_selected_lang
 let i18n_resources = {
   en: {
     translation: {
-      test: 'hello world',
+      test: 'hello!',
       config: 'Config',
       'choose-location': 'Choose location',
+      'choose-voice': 'Choose voice',
       close: 'Close',
       quote: 'Quote',
       read: 'Read',
@@ -15,6 +16,7 @@ let i18n_resources = {
       refresh: 'Refresh',
       o_clock: " o'clock",
       to: 'to',
+      'select-voice-in-config-section-first': 'Select voice in config section first!',
     },
   },
   zh: {
@@ -22,6 +24,7 @@ let i18n_resources = {
       test: '哈囉！',
       config: '設定',
       'choose-location': '選擇地區',
+      'choose-voice': '選擇聲音',
       close: '關閉',
       quote: '佳句',
       read: '閱讀',
@@ -31,11 +34,10 @@ let i18n_resources = {
       refresh: '重新整理',
       o_clock: '點',
       to: '到',
+      'select-voice-in-config-section-first': '請先在設定中選擇聲音！',
     },
   },
 }
-
-// !!! key 不能和內容一樣
 function i18n_init() {
   i18next
     .init({
@@ -54,6 +56,10 @@ function i18n_refresh() {
 
 function i18n_get(key) {
   return i18next.t(key)
+}
+
+function i18n_change(lng) {
+  i18next.changeLanguage(lng)
 }
 
 function getLanguage() {

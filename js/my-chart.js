@@ -50,7 +50,7 @@ function generate_weather_chart_data(weatherElement) {
     if (weatherElementName == 'MaxT') {
       maxt_chart_image_data.datasets = [
         {
-          label: '最大溫度',
+          label: i18n_get('MaxT'),
           data: [],
           borderColor: CHART_COLORS.red,
           borderWidth: line_chart_border_width,
@@ -66,7 +66,7 @@ function generate_weather_chart_data(weatherElement) {
     if (weatherElementName == 'MinT') {
       mint_chart_image_data.datasets = [
         {
-          label: '最小溫度',
+          label: i18n_get('MinT'),
           data: [],
           borderColor: CHART_COLORS.blue,
           borderWidth: line_chart_border_width,

@@ -15,6 +15,8 @@
 
 ![splash](https://rzxbsbriajkqxdsmxvev.supabase.in/storage/v1/object/public/image/splash-compress.jpg)
 
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+
 ```
      _    ____                        _           _
  ___| | __ ___| ___   _ __  _ __ ___ (_) ___  ___| |_

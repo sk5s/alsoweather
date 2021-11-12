@@ -13,6 +13,12 @@
 
 > Icons made by [iconixar](https://www.flaticon.com/authors/iconixar) from [www.flaticon.com](https://www.flaticon.com/)
 
+---
+
+<a href="https://www.sk5s.cyou/sk5short/" target="_blank"><img width="20px" src="https://upload.cc/i1/2021/11/12/p8YxXc.png" alt=""> alsoweather web</a>
+
+---
+
 ![splash](https://rzxbsbriajkqxdsmxvev.supabase.in/storage/v1/object/public/image/splash-compress.jpg)
 
 [![sk5s site](https://upload.cc/i1/2021/10/29/dVn6TN.png)](https://www.sk5s.cyou/)

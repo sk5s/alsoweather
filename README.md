@@ -35,4 +35,4 @@
                      |_|           |__/
 ```
 
-🔗 https://git.io/alsoweather
+🔗 [https://git.io/alsoweather](https://git.io/alsoweather)

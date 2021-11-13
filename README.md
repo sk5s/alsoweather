@@ -15,7 +15,7 @@
 
 ---
 
-<a href="https://www.sk5s.cyou/sk5short/" target="_blank"><img width="20px" src="https://upload.cc/i1/2021/11/12/p8YxXc.png" alt=""> alsoweather web</a>
+<a href="https://www.sk5s.cyou/alsoweather/" target="_blank"><img width="20px" src="https://upload.cc/i1/2021/11/12/p8YxXc.png" alt=""> alsoweather web</a>
 
 ---
 

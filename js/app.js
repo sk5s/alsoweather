@@ -53,6 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
   i18n_init()
 })
 
+// service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('sw.js')
+    .then((registration) => {
+      console.log('sw registered!')
+      console.log(registration)
+    })
+    .catch((error) => {
+      console.log('sw error: ' + error)
+    })
+}
+
 // html changed service
 function html_changed() {
   i18n_refresh()
@@ -296,7 +309,7 @@ function populateVoiceList() {
 function generate_now_weather_speech_script(nowstate) {
   speech_script[
     'zh-TW'
-  ] = `今天天氣${nowstate.CI}、${nowstate.Wx}，最高溫度維${nowstate.MaxT}度C，最低溫度維${nowstate.MinT}度C，降雨機率${nowstate.PoP}趴。`
+  ] = `今日${cwb_location_select_value}天氣${nowstate.CI}、${nowstate.Wx}，最高溫度維${nowstate.MaxT}度C，最低溫度維${nowstate.MinT}度C，降雨機率${nowstate.PoP}趴。`
   speech_script[
     'en-US'
   ] = `Today's High Temperature is ${nowstate.MaxT} Celsius, Low Temperature is${nowstate.MinT}Celsius, probability of precipitation is ${nowstate.PoP} percent`

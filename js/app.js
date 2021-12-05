@@ -25,6 +25,7 @@ let speech_script = {
 }
 
 let populated_voice_select //html object
+let darkmode //darkmode object
 
 // grab html dom element
 let html = document.getElementById('html')
@@ -51,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   fresh()
   speech_synthesis_init()
   i18n_init()
+
+  darkmode_init()
 })
 
 // service worker
@@ -480,4 +483,38 @@ function close_modal(buttonElement) {
   let modal = document.querySelector(`[data-modal-name='${modal_to_toggle}']`)
   modal.classList.remove('is-active')
   html.classList.remove('is-clipped')
+}
+
+// pwa
+function reinstall_pwa() {
+  let isconfirm = confirm('reinstall service worker?')
+  if (isconfirm) {
+    caches.delete('static')
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    alert_modal('Please reload the page', 3000)
+  }
+}
+
+// dark mode
+function darkmode_init() {
+  const options = {
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#fff', // default: '#fff'
+    buttonColorDark: '#100f2c', // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: true, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true, // default: true
+  }
+  darkmode = new Darkmode(options)
+}
+
+function toggle_darkmode() {
+  darkmode.toggle()
 }

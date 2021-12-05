@@ -5,9 +5,11 @@ self.addEventListener('install', (e) => {
         './',
         './css/bulma.min.css',
         './css/style.css',
+        './js/app.js',
         './js/chart.min.js',
         './js/i18n.js',
         './js/my-chart.js',
+        './js/darkmode-js.min.js',
         './icon/icon.png',
       ])
     })

@@ -143,12 +143,29 @@
           </div>
         </div>
 
+        <button onclick="toggle_darkmode()" class="button is-large is-info is-outlined is-fullwidth mt-3 mb-3">
+          <span class="icon is-small">
+            <i class="fas fa-adjust"></i>
+          </span>
+          <span data-i18n-key="toggle-darkmode" class="ml-3">toggle-darkmode</span>
+        </button>
+
+        <hr>
+
+        <button onclick="reinstall_pwa()" class="button is-large is-danger is-outlined is-fullwidth mt-3 mb-3">
+          <span class="icon is-small">
+            <i class="fas fa-times-circle"></i>
+          </span>
+          <span data-i18n-key="reinstall-pwa" class="ml-3">reinstall-pwa</span>
+        </button>
+        <span>You can reinstall service worker and remove caches when facing problems by clicking this button.</span>
+
         <hr>
         <a class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" href="https://www.sk5s.cyou/alsoweather/docs/#/guide/install-pwa" target="_blank">
           <span class="icon is-small">
             <i class="fas fa-question-circle"></i>
           </span>
-          <span data-i18n-key="install-pwa" class="ml-3">install-pwa</span>
+          <span data-i18n-key="how-install-pwa" class="ml-3">install-pwa</span>
         </a>
         <a class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" href="https://git.io/alsoweather" target="_blank">
           <span class="icon is-small">
@@ -190,6 +207,7 @@
   <script src="js/key.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/my-chart.js"></script>
+  <script src="js/darkmode-js.min.js"></script>
   <script src="js/app.js"></script>
 
 </body>

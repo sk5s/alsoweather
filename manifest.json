@@ -1,12 +1,12 @@
 {
   "dir": "ltr",
-  "display": "standalone",
+  "display": "minimal-ui",
   "name": "alsoweather",
   "orientation": "any",
   "scope": "./",
   "short_name": "alsoweather",
   "start_url": "./",
-  "theme_color": "#CCCC99",
+  "theme_color": "#000000",
   "background_color": "#ffffff",
   "icons": [
     {

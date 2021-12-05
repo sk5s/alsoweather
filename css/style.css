@@ -29,3 +29,56 @@ canvas {
   width: 100%;
   position: relative;
 }
+
+/* dark mode */
+.darkmode-background {
+  background-color: #06281e;
+}
+.darkmode-toggle {
+  z-index: 9999;
+}
+
+.darkmode--activated button.is-success {
+  background-color: #d2f4ea;
+  border-color: transparent;
+  color: #d2f4ea;
+}
+.darkmode--activated .button.is-success.is-outlined {
+  border-color: #d2f4ea;
+  color: #d2f4ea;
+}
+.darkmode--activated .button.is-success.is-outlined.is-focused,
+.darkmode--activated .button.is-success.is-outlined.is-hovered,
+.darkmode--activated .button.is-success.is-outlined:focus,
+.darkmode--activated .button.is-success.is-outlined:hover {
+  background-color: #d2f4ea;
+  border-color: #d2f4ea;
+  color: #000;
+}
+.darkmode--activated .title {
+  color: #d2f4ea;
+}
+
+.darkmode--activated .has-background-success-light {
+  background-color: #0d503c !important;
+}
+.darkmode--activated .tile.is-child.box {
+  background-color: #13795b;
+}
+.darkmode--activated p.heading {
+  color: #d2f4ea;
+}
+.darkmode--activated span.card-header-title,
+.darkmode--activated span.card-header-icon,
+.darkmode--activated .card-content span.is-large {
+  color: #d2f4ea;
+}
+
+.darkmode--activated div.modal-card .modal-card-head,
+.darkmode--activated div.modal-card .modal-card-foot {
+  color: #d2f4ea;
+  background-color: #13795b;
+}
+.darkmode--activated div.modal-card section.modal-card-body {
+  background-color: #06281e;
+}

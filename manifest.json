@@ -1,6 +1,6 @@
 {
   "dir": "ltr",
-  "display": "minimal-ui",
+  "display": "standalone",
   "name": "alsoweather",
   "orientation": "any",
   "scope": "./",

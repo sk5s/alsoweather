@@ -9,7 +9,7 @@
 
 簡易天氣 app，有 mobile、desktop 版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示
 
-<img src="https://rzxbsbriajkqxdsmxvev.supabase.in/storage/v1/object/public/image/icon.png" alt="Icons made by iconixar from www.flaticon.com" style="width:80px">
+<img src="https://upload.cc/i1/2022/01/22/nURhey.png" alt="Icons made by iconixar from www.flaticon.com" style="width:80px">
 
 > Icons made by [iconixar](https://www.flaticon.com/authors/iconixar) from [www.flaticon.com](https://www.flaticon.com/)
 

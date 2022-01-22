@@ -27,7 +27,7 @@
 
 ---
 
-![splash](https://rzxbsbriajkqxdsmxvev.supabase.in/storage/v1/object/public/image/splash-compress.jpg)
+![splash](https://upload.cc/i1/2022/01/22/boRBjm.jpg)
 
 [![sk5s site](https://upload.cc/i1/2021/10/29/dVn6TN.png)](https://www.sk5s.cyou/)
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://www.sk5s.cyou/)

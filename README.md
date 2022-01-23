@@ -200,7 +200,7 @@ Project Link: [https://github.com/sk5s/alsoweather](https://github.com/sk5s/also
 [response-time-shield]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/sk5s/uptime/master/api/alsoweather-website/response-time.json&style=for-the-badge
 [response-time-url]: https://uptime.sk5s.cyou/history/alsoweather-website
 [license-shield]: https://img.shields.io/github/license/sk5s/alsoweather.svg?style=for-the-badge
-[license-url]: https://github.com/sk5s/alsoweather/blob/master/LICENSE.txt
+[license-url]: https://github.com/sk5s/alsoweather/blob/main/LICENSE
 [product-screenshot]: https://user-images.githubusercontent.com/92437055/140604816-a5b62528-867d-41de-9ec0-82835198dff6.png
 
 <!--

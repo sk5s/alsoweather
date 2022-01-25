@@ -31,6 +31,7 @@
   </a>
 
 <h3 align="center">alsoweather</h3>
+<div align="center"><small> Icons made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar"> iconixar </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
 
   <p align="center">
     簡易天氣 app，有 mobile、desktop 版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示

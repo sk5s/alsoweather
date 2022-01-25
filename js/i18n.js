@@ -74,7 +74,11 @@ function getLanguage() {
   let browser = navigator.language
   if (!user_selected_lang) {
     if (browser.includes('zh') || browser.includes('en')) {
-      return browser
+      if (browser.includes('zh')) {
+        return 'zh'
+      } else {
+        return 'en'
+      }
     } else {
       return 'en'
     }

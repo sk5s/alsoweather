@@ -187,7 +187,7 @@ Project Link: [https://github.com/sk5s/alsoweather](https://github.com/sk5s/also
                      |_|           |__/
 ```
 
-🔗 [Git repo](https://git.io/alsoweather)
+🔗 [Git Repo](https://git.io/alsoweather)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

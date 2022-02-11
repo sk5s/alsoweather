@@ -47,6 +47,7 @@ let i18n_resources = {
   },
 }
 function i18n_init() {
+  console.log(i18next)
   i18next
     .init({
       lng: getLanguage(),

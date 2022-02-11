@@ -49,14 +49,19 @@ lang_select.addEventListener('input', lang_input_service)
 
 // init
 document.addEventListener('DOMContentLoaded', () => {
+  i18n_init()
   restore_location()
   restore_speech_voice()
   restore_app_lang()
   fresh()
   speech_synthesis_init()
-  i18n_init()
 
   darkmode_init()
+  setTimeout(() => {
+    if (!i18next.translator) {
+      i18n_init()
+    }
+  }, 500)
 })
 
 // service worker

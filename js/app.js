@@ -38,6 +38,9 @@ let speechSynthesis_container = document.getElementById('speechSynthesis_contain
 let speechSynthesis_config_container = document.getElementById('speechSynthesis_config_container')
 let prompt_modal_container = document.getElementById('prompt_modal_container')
 
+// because init problem in some browser
+let i18next_script = document.getElementById('i18next_script')
+
 let weather_chart_canvas = document.getElementById('weather_chart_canvas')
 
 // event

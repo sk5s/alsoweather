@@ -1,5 +1,6 @@
 const version = '0.8.0'
 const message = 'hi, alsoweather url has been changed to https://sk5s.cyou/alsoweather'
+const message2 = "try to fix undefined translation now"
 
 self.addEventListener('install', (e) => {
   e.waitUntil(

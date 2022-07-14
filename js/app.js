@@ -49,10 +49,10 @@ lang_select.addEventListener('input', lang_input_service)
 
 // init
 document.addEventListener('DOMContentLoaded', () => {
-  i18n_init()
   restore_location()
   restore_speech_voice()
   restore_app_lang()
+  i18n_init()
   fresh()
   speech_synthesis_init()
 

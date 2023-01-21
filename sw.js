@@ -1,4 +1,4 @@
-const version = '0.8.0'
+const version = '1.0.0'
 const message = 'hi, alsoweather url has been changed to https://sk5s.cyou/alsoweather'
 
 self.addEventListener('install', (e) => {

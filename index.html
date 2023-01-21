@@ -1,225 +1,233 @@
 <!DOCTYPE html>
 <html id="html" lang="zh" class="has-navbar-fixed-top">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alsoweather</title>
-  <link rel="shortcut icon" type="image/jpg" href="icon/icon.png"/>
-  <!-- css -->
-  <link rel="stylesheet" href="css/bulma.min.css">
-  <link rel="stylesheet" href="css/glowCookies.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>alsoweather</title>
+    <link rel="shortcut icon" type="image/jpg" href="icon/icon.png" />
+    <!-- css -->
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <link rel="stylesheet" href="css/glowCookies.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#effaf5">
-  <link rel="apple-touch-icon" href="icon/icon.png">
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#effaf5" />
+    <link rel="apple-touch-icon" href="icon/icon.png" />
 
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
-  <script src="js/chart.min.js"></script>
-</head>
-<body>
-  <!-- nav bar -->
-  <nav class="navbar has-background-success-light is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="">
-        <h5 class="title is-5">alsoweather</h5>
-      </a>
-    </div>
-  </nav>
+    <script src="js/chart.min.js"></script>
+  </head>
+  <body>
+    <!-- nav bar -->
+    <nav class="navbar has-background-success-light is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="">
+          <h5 class="title is-5">alsoweather</h5>
+        </a>
+      </div>
+    </nav>
 
-  <!-- main content -->
-  <div class="container mt-3">
-    <h2 class="title is-2" data-fillin-text="cwb_location_select_value">...</h2>
+    <!-- main content -->
+    <div class="container mt-3 px-3" style="max-width: 600px">
+      <h2 class="title is-2" data-fillin-text="cwb_location_select_value">...</h2>
 
-    <!-- refresh button -->
-    <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="refresh_all()">
-      <span class="icon is-small">
-        <i class="fas fa-sync"></i>
-      </span>
-      <span class="ml-3" data-i18n-key="refresh">Refresh</span>
-    </button>
-
-    <!-- SpeechSynthesis button -->
-    <div id="speechSynthesis_container"></div>
-
-    <!-- weather info -->
-    <div class="card has-background-success-light mt-3 mb-3">
-      <div class="card-content">
-        <div class="content" id="weather_block_inner_content">
-          <div id="loading_weather_skeleton">
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
+      <!-- weather info -->
+      <div class="card has-background-success-light mt-3 mb-3">
+        <div class="card-content">
+          <div class="content" id="weather_block_inner_content">
+            <div id="loading_weather_skeleton">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- weather chart -->
-    <div class="card has-background-success-light mt-3 mb-3">
-      <div class="card-content">
-        <div class="content" id="weather_chart_inner_content">
-          <canvas id="weather_chart_canvas" width="400" height="200"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- some quote -->
-    <div class="card has-background-success-light mt-3 mb-3">
-      <div class="card-header">
-        <span class="card-header-icon">
-          <i class="fas fa-angle-double-right"></i>
-        </span>
-        <span class="card-header-title" data-i18n-key="quote">
-          Quote
-        </span>
-      </div>
-      <div class="card-content">
-        <div class="content" id="quote_block_inner_content">
-          <div id="loading_quote_skeleton">
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-            <div class="skeleton skeleton-text"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <!-- open config button -->
-      <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="open_modal(this)" data-modal-to-open="config">
+      <!-- refresh button -->
+      <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="refresh_all()">
         <span class="icon is-small">
-          <i class="fas fa-cog"></i>
+          <i class="fas fa-sync"></i>
         </span>
-        <span data-i18n-key="config" class="ml-3">Config</span>
+        <span class="ml-3" data-i18n-key="refresh">Refresh</span>
       </button>
-    </div>
 
-  </div>
+      <!-- SpeechSynthesis button -->
+      <div id="speechSynthesis_container"></div>
 
-
-  <!-- modal -->
-  <!-- config modal -->
-  <div data-modal-name="config" class="modal">
-    <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="config"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title" data-i18n-key="config">Config</p>
-        <button class="delete" aria-label="close" onclick="close_modal(this)" data-modal-to-close="config"></button>
-      </header>
-      <section class="modal-card-body">
-        <!-- location -->
-        <div class="control has-icons-left mt-3 mb-3">
-          <div class="select is-large is-fullwidth">
-            <select id="cwb_location_select">
-              <option value="" data-i18n-key="choose-location" disabled selected>choose location</option>
-            </select>
-          </div>
-          <div class="icon is-large is-left">
-            <i class="fas fa-map-marker-alt"></i>
+      <!-- weather chart -->
+      <div class="card has-background-success-light mt-3 mb-3">
+        <div class="card-content">
+          <div class="content" id="weather_chart_inner_content">
+            <canvas id="weather_chart_canvas" width="400" height="200"></canvas>
           </div>
         </div>
-        <!-- SpeechSynthesis config -->
-        <div id="speechSynthesis_config_container"></div>
-        <!-- lang -->
-        <div class="control has-icons-left mt-3 mb-3">
-          <div class="select is-large is-fullwidth">
-            <select id="lang_select">
-              <option value="en">en</option>
-              <option value="zh-TW">zh-TW</option>
-            </select>
-          </div>
-          <div class="icon is-large is-left">
-            <i class="fas fa-language"></i>
+      </div>
+
+      <!-- some quote -->
+      <div class="card has-background-success-light mt-3 mb-3">
+        <div class="card-header">
+          <span class="card-header-icon">
+            <i class="fas fa-angle-double-right"></i>
+          </span>
+          <span class="card-header-title" data-i18n-key="quote"> Quote </span>
+        </div>
+        <div class="card-content">
+          <div class="content" id="quote_block_inner_content">
+            <div id="loading_quote_skeleton">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <button onclick="toggle_darkmode()" class="button is-large is-info is-outlined is-fullwidth mt-3 mb-3">
+      <div>
+        <!-- open config button -->
+        <button
+          class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+          onclick="open_modal(this)"
+          data-modal-to-open="config"
+        >
           <span class="icon is-small">
-            <i class="fas fa-adjust"></i>
+            <i class="fas fa-cog"></i>
           </span>
-          <span data-i18n-key="toggle-darkmode" class="ml-3">toggle-darkmode</span>
+          <span data-i18n-key="config" class="ml-3">Config</span>
         </button>
-
-        <hr>
-
-        <button onclick="reinstall_pwa()" class="button is-large is-danger is-outlined is-fullwidth mt-3 mb-3">
-          <span class="icon is-small">
-            <i class="fas fa-times-circle"></i>
-          </span>
-          <span data-i18n-key="reinstall-pwa" class="ml-3">reinstall-pwa</span>
-        </button>
-        <span>You can reinstall service worker and remove caches when facing problems by clicking this button.</span>
-
-        <hr>
-        <a class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" href="https://sk5s.cyou/alsoweather/docs/#/guide/install-pwa" target="_blank">
-          <span class="icon is-small">
-            <i class="fas fa-question-circle"></i>
-          </span>
-          <span data-i18n-key="how-install-pwa" class="ml-3">install-pwa</span>
-        </a>
-        <a class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" href="https://git.io/alsoweather" target="_blank">
-          <span class="icon is-small">
-            <i class="fab fa-github"></i>
-          </span>
-          <span class="ml-3">Github</span>
-        </a>
-        <button onclick="alert_modal(`<h1 class='title is-1 mb-3'>About alsoweather</h1>簡易天氣app，有mobile、desktop版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示<br><a class='button is-large is-success' href='https:\/\/sk5s.cyou/alsoweather/docs/' target='_blank'><i class='fas fa-external-link-square-alt'></i> docs</a>`, )" class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3">
-          <span class="icon is-small">
-            <i class="fas fa-info-circle"></i>
-          </span>
-          <span data-i18n-key="about" class="ml-3">about</span>
-        </button>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button" onclick="close_modal(this)" data-modal-to-close="config" data-i18n-key="close">Close</button>
-      </footer>
+      </div>
     </div>
-  </div>
 
-  <!-- prompt modal container -->
-  <div data-modal-name="prompt" class="modal">
-    <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="prompt"></div>
-    <div class="modal-card">
-      <section class="modal-card-body" id="prompt_modal_container">
+    <!-- modal -->
+    <!-- config modal -->
+    <div data-modal-name="config" class="modal">
+      <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="config"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title" data-i18n-key="config">Config</p>
+          <button class="delete" aria-label="close" onclick="close_modal(this)" data-modal-to-close="config"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- location -->
+          <div class="control has-icons-left mt-3 mb-3">
+            <div class="select is-large is-fullwidth">
+              <select id="cwb_location_select">
+                <option value="" data-i18n-key="choose-location" disabled selected>choose location</option>
+              </select>
+            </div>
+            <div class="icon is-large is-left">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+          </div>
+          <!-- SpeechSynthesis config -->
+          <div id="speechSynthesis_config_container"></div>
+          <!-- lang -->
+          <div class="control has-icons-left mt-3 mb-3">
+            <div class="select is-large is-fullwidth">
+              <select id="lang_select">
+                <option value="en">en</option>
+                <option value="zh-TW">zh-TW</option>
+              </select>
+            </div>
+            <div class="icon is-large is-left">
+              <i class="fas fa-language"></i>
+            </div>
+          </div>
 
-      </section>
+          <button onclick="toggle_darkmode()" class="button is-large is-info is-outlined is-fullwidth mt-3 mb-3">
+            <span class="icon is-small">
+              <i class="fas fa-adjust"></i>
+            </span>
+            <span data-i18n-key="toggle-darkmode" class="ml-3">toggle-darkmode</span>
+          </button>
+
+          <hr />
+
+          <button onclick="reinstall_pwa()" class="button is-large is-danger is-outlined is-fullwidth mt-3 mb-3">
+            <span class="icon is-small">
+              <i class="fas fa-times-circle"></i>
+            </span>
+            <span data-i18n-key="reinstall-pwa" class="ml-3">reinstall-pwa</span>
+          </button>
+          <span>You can reinstall service worker and remove caches when facing problems by clicking this button.</span>
+
+          <hr />
+          <a
+            class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+            href="https://sk5s.cyou/alsoweather/docs/#/guide/install-pwa"
+            target="_blank"
+          >
+            <span class="icon is-small">
+              <i class="fas fa-question-circle"></i>
+            </span>
+            <span data-i18n-key="how-install-pwa" class="ml-3">install-pwa</span>
+          </a>
+          <a
+            class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+            href="https://git.io/alsoweather"
+            target="_blank"
+          >
+            <span class="icon is-small">
+              <i class="fab fa-github"></i>
+            </span>
+            <span class="ml-3">Github</span>
+          </a>
+          <button
+            onclick="alert_modal(`<h1 class='title is-1 mb-3'>About alsoweather</h1>簡易天氣app，有mobile、desktop版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示<br><a class='button is-large is-success' href='https:\/\/sk5s.cyou/alsoweather/docs/' target='_blank'><i class='fas fa-external-link-square-alt'></i> docs</a>`, )"
+            class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+          >
+            <span class="icon is-small">
+              <i class="fas fa-info-circle"></i>
+            </span>
+            <span data-i18n-key="about" class="ml-3">about</span>
+          </button>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button" onclick="close_modal(this)" data-modal-to-close="config" data-i18n-key="close">
+            Close
+          </button>
+        </footer>
+      </div>
     </div>
-  </div>
 
-  <!-- footer -->
-  <div class="pt-6"></div>
-  <footer class="navbar has-background-success-light">
-    <div style="text-align: center;width: 100%;">
-      sk5s project
+    <!-- prompt modal container -->
+    <div data-modal-name="prompt" class="modal">
+      <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="prompt"></div>
+      <div class="modal-card">
+        <section class="modal-card-body" id="prompt_modal_container"></section>
+      </div>
     </div>
-  </footer>
 
-  <script src="js/key.js"></script>
-  <script id="i18next_script" src="https://cdn.jsdelivr.net/npm/i18next@21.6.11/i18next.min.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/my-chart.js"></script>
-  <script src="js/darkmode-js.min.js"></script>
-  <script src="js/glowCookies.js"></script>
-  <script src="js/app.js"></script>
+    <!-- footer -->
+    <div class="pt-6"></div>
+    <footer class="navbar has-background-success-light">
+      <div style="text-align: center; width: 100%">sk5s project</div>
+    </footer>
 
-  <script>
-    glowCookies.start('en', { 
+    <script src="js/key.js"></script>
+    <script id="i18next_script" src="https://cdn.jsdelivr.net/npm/i18next@21.6.11/i18next.min.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/my-chart.js"></script>
+    <script src="js/darkmode-js.min.js"></script>
+    <script src="js/glowCookies.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+      glowCookies.start('en', {
         style: 1,
         position: 'right',
         hideAfterClick: true,
         manageText: ' ',
-        hotjar: 2745355
-    });
-  </script>
-
-</body>
+        hotjar: 2745355,
+      })
+    </script>
+  </body>
 </html>

@@ -1,4 +1,4 @@
-let user_selected_lang
+let user_selected_lang = 'en'
 
 let i18n_resources = {
   en: {

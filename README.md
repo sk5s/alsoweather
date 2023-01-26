@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/sk5s/alsoweather">
-    <img src="https://upload.cc/i1/2022/01/22/nURhey.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/sk5s/alsoweather-docs/main/img/nURhey.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">alsoweather</h3>
@@ -49,7 +49,7 @@
 
 <div id="top"></div>
 
-[![sk5s site](https://upload.cc/i1/2022/01/22/dUIc8A.png)](https://sk5s.cyou/)
+[![sk5s site](https://sk5s.cyou/sk5s/img/sk5s-project-bar.png)](https://sk5s.cyou/)
 
 <!-- TABLE OF CONTENTS -->
 <details>

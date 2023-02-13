@@ -82,3 +82,8 @@ canvas {
 .darkmode--activated div.modal-card section.modal-card-body {
   background-color: #06281e;
 }
+
+.button {
+  height: max-content;
+  white-space: inherit;
+}

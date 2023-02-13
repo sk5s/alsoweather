@@ -65,17 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('sw.js')
-    .then((registration) => {
-      console.log('sw registered!')
-      console.log(registration)
-    })
-    .catch((error) => {
-      console.log('sw error: ' + error)
-    })
-}
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker
+//     .register('../sw.js')
+//     .then((registration) => {
+//       console.log('sw registered!')
+//       console.log(registration)
+//     })
+//     .catch((error) => {
+//       console.log('sw error: ' + error)
+//     })
+// }
 
 // html changed service
 function html_changed() {
@@ -195,7 +195,7 @@ function restore_location() {
   if (data) {
     cwb_location_select_value = data
   } else {
-    cwb_location_select_value = '臺北市'
+    cwb_location_select_value = '嘉義縣'
   }
 }
 

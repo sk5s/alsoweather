@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/jpg" href="icon/icon.png" />
     <!-- css -->
     <link rel="stylesheet" href="css/bulma.min.css" />
-    <link rel="stylesheet" href="css/glowCookies.css" />
+    <!-- <link rel="stylesheet" href="css/glowCookies.css" /> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
     <link rel="manifest" href="manifest.json" />
@@ -151,7 +151,7 @@
 
           <hr />
 
-          <button onclick="reinstall_pwa()" class="button is-large is-danger is-outlined is-fullwidth mt-3 mb-3">
+          <!-- <button onclick="reinstall_pwa()" class="button is-large is-danger is-outlined is-fullwidth mt-3 mb-3">
             <span class="icon is-small">
               <i class="fas fa-times-circle"></i>
             </span>
@@ -159,7 +159,7 @@
           </button>
           <span>You can reinstall service worker and remove caches when facing problems by clicking this button.</span>
 
-          <hr />
+          <hr /> -->
           <a
             class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
             href="https://sk5s.cyou/alsoweather/docs/#/guide/install-pwa"
@@ -213,14 +213,16 @@
     </footer>
 
     <script src="js/key.js"></script>
+<script src="./capacitor.js"></script>
+<script src="./ad.js"></script>
     <script id="i18next_script" src="https://cdn.jsdelivr.net/npm/i18next@21.6.11/i18next.min.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/my-chart.js"></script>
     <script src="js/darkmode-js.min.js"></script>
-    <script src="js/glowCookies.js"></script>
+    <!-- <script src="js/glowCookies.js"></script> -->
     <script src="js/app.js"></script>
 
-    <script>
+    <!-- <script>
       glowCookies.start('en', {
         style: 1,
         position: 'right',
@@ -228,6 +230,6 @@
         manageText: ' ',
         hotjar: 2745355,
       })
-    </script>
+    </script> -->
   </body>
 </html>

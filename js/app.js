@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   restore_speech_voice()
   restore_app_lang()
   i18n_init()
+  darkmode_init()
   fresh()
   speech_synthesis_init()
 
-  darkmode_init()
   setTimeout(() => {
     if (!i18next.translator) {
       i18n_init()

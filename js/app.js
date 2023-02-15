@@ -49,6 +49,7 @@ lang_select.addEventListener('input', lang_input_service)
 
 // init
 document.addEventListener('DOMContentLoaded', () => {
+  first_time_tour()
   restore_location()
   restore_speech_voice()
   restore_app_lang()
@@ -76,6 +77,65 @@ document.addEventListener('DOMContentLoaded', () => {
 //       console.log('sw error: ' + error)
 //     })
 // }
+
+function first_time_tour() {
+  if (localStorage.getItem('alsoweather_app_seen_tour') == null) {
+    const tour = new Shepherd.Tour({
+      useModalOverlay: true,
+      defaultStepOptions: {
+        classes: 'shadow-md bg-purple-dark',
+        scrollTo: true,
+      },
+      confirmCancel: true,
+    })
+    tour.addStep({
+      text: '由此查看當時段的天氣情況',
+      attachTo: {
+        element: '#step1',
+        on: 'bottom',
+      },
+      buttons: [
+        {
+          text: 'Exit Tour',
+          action: tour.cancel,
+        },
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '由此查看接下來36小時的最高最低溫',
+      attachTo: {
+        element: '#step2',
+        on: 'bottom',
+      },
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    document.getElementById('configButton').addEventListener('click', () => {
+      tour.next()
+    })
+    tour.addStep({
+      text: '點擊設定來調整地區',
+      attachTo: {
+        element: '#configButton',
+        on: 'top',
+      },
+    })
+    tour.start()
+    localStorage.setItem('alsoweather_app_seen_tour', 'true')
+  }
+}
+function see_tour_again() {
+  localStorage.removeItem('alsoweather_app_seen_tour')
+  window.location.reload()
+}
 
 // html changed service
 function html_changed() {

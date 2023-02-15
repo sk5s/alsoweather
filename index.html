@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/chart.min.js"></script>
+
+    <!-- shepherd -->
+    <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css" />
   </head>
   <body>
     <!-- nav bar -->
@@ -35,7 +39,7 @@
 
       <!-- weather info -->
       <div class="card has-background-success-light mt-3 mb-3">
-        <div class="card-content">
+        <div class="card-content" id="step1">
           <div class="content" id="weather_block_inner_content">
             <div id="loading_weather_skeleton">
               <div class="skeleton skeleton-text"></div>
@@ -63,7 +67,7 @@
 
       <!-- weather chart -->
       <div class="card has-background-success-light mt-3 mb-3">
-        <div class="card-content">
+        <div class="card-content" id="step2">
           <div class="content" id="weather_chart_inner_content">
             <canvas id="weather_chart_canvas" width="400" height="200"></canvas>
           </div>
@@ -97,6 +101,7 @@
           class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
           onclick="open_modal(this)"
           data-modal-to-open="config"
+          id="configButton"
         >
           <span class="icon is-small">
             <i class="fas fa-cog"></i>
@@ -160,6 +165,14 @@
           <span>You can reinstall service worker and remove caches when facing problems by clicking this button.</span>
 
           <hr /> -->
+
+          <button onclick="see_tour_again()" class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3">
+            <span class="icon is-small">
+              <i class="fas fa-question-circle"></i>
+            </span>
+            <span data-i18n-key="see-tour" class="ml-3">See tour</span>
+          </button>
+
           <a
             class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
             href="https://sk5s.cyou/alsoweather/docs/#/guide/install-pwa"

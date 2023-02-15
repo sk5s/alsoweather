@@ -120,6 +120,8 @@ _[Documentation](https://sk5s.cyou/alsoweather/docs/)_
 
 ## Roadmap
 
+- [ ] Instruction
+- [ ] Weather recommendation
 - [ ] User Login
 - [ ] Clear cookie preference
 - [ ] Update dark mode color

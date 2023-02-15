@@ -49,14 +49,15 @@ lang_select.addEventListener('input', lang_input_service)
 
 // init
 document.addEventListener('DOMContentLoaded', () => {
+  first_time_tour()
   restore_location()
   restore_speech_voice()
   restore_app_lang()
   i18n_init()
+  darkmode_init()
   fresh()
   speech_synthesis_init()
 
-  darkmode_init()
   setTimeout(() => {
     if (!i18next.translator) {
       i18n_init()
@@ -76,6 +77,119 @@ document.addEventListener('DOMContentLoaded', () => {
 //       console.log('sw error: ' + error)
 //     })
 // }
+
+function first_time_tour() {
+  if (localStorage.getItem('alsoweather_app_seen_tour') == null) {
+    const tour = new Shepherd.Tour({
+      useModalOverlay: true,
+      defaultStepOptions: {
+        classes: 'shadow-md bg-purple-dark',
+        scrollTo: true,
+      },
+      confirmCancel: true,
+    })
+    tour.addStep({
+      text: '由此查看當時段的天氣情況',
+      attachTo: {
+        element: '#step1',
+        on: 'top',
+      },
+      buttons: [
+        {
+          text: 'Exit Tour',
+          action: tour.cancel,
+        },
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '點擊重新整理天氣資料',
+      attachTo: {
+        element: '#refresh_button',
+        on: 'top',
+      },
+      scrollTo: false,
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '由此查看接下來36小時的最高最低溫',
+      attachTo: {
+        element: '#step2',
+        on: 'bottom',
+      },
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    let config_click_count = 0
+
+    const myClick = () => {
+      config_click_count++
+      if (config_click_count == 2) {
+        // to remove
+        document.getElementById('configButton').removeEventListener('click', myClick)
+      } else {
+        tour.next()
+      }
+    }
+    document.getElementById('configButton').addEventListener('click', myClick)
+    tour.addStep({
+      text: '點擊設定來調整地區',
+      attachTo: {
+        element: '#configButton',
+        on: 'top',
+      },
+    })
+    tour.addStep({
+      text: '選取地區',
+      attachTo: {
+        element: '#cwb_location_select',
+        on: 'bottom',
+      },
+      scrollTo: false,
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '切換語言',
+      attachTo: {
+        element: '#lang_select',
+        on: 'bottom',
+      },
+      scrollTo: false,
+      buttons: [
+        {
+          text: 'Complete',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.start()
+    tour.on('cancel', () => {
+      document.getElementById('configButton').removeEventListener('click', myClick)
+    })
+    localStorage.setItem('alsoweather_app_seen_tour', 'true')
+  }
+}
+function see_tour_again() {
+  localStorage.removeItem('alsoweather_app_seen_tour')
+  window.location.reload()
+}
 
 // html changed service
 function html_changed() {

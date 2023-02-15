@@ -43,6 +43,7 @@ let i18n_resources = {
       'reinstall-pwa': '重新安裝網頁應用程式',
       'toggle-darkmode': '切換黑暗模式',
       'select-voice-in-config-section-first': '請先在設定中選擇聲音！',
+      'see-tour': '看導覽',
     },
   },
 }
@@ -81,7 +82,7 @@ function getLanguage() {
         return 'en'
       }
     } else {
-      return 'en'
+      return 'zh' //changed from en to zh
     }
   } else {
     return user_selected_lang

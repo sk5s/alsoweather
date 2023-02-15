@@ -82,7 +82,7 @@ function getLanguage() {
         return 'en'
       }
     } else {
-      return 'en'
+      return 'zh' //changed from en to zh
     }
   } else {
     return user_selected_lang

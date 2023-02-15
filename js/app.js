@@ -92,13 +92,27 @@ function first_time_tour() {
       text: '由此查看當時段的天氣情況',
       attachTo: {
         element: '#step1',
-        on: 'bottom',
+        on: 'top',
       },
       buttons: [
         {
           text: 'Exit Tour',
           action: tour.cancel,
         },
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '點擊重新整理天氣資料',
+      attachTo: {
+        element: '#refresh_button',
+        on: 'top',
+      },
+      scrollTo: false,
+      buttons: [
         {
           text: 'Next',
           action: tour.next,
@@ -118,9 +132,18 @@ function first_time_tour() {
         },
       ],
     })
-    document.getElementById('configButton').addEventListener('click', () => {
-      tour.next()
-    })
+    let config_click_count = 0
+
+    const myClick = () => {
+      config_click_count++
+      if (config_click_count == 2) {
+        // to remove
+        document.getElementById('configButton').removeEventListener('click', myClick)
+      } else {
+        tour.next()
+      }
+    }
+    document.getElementById('configButton').addEventListener('click', myClick)
     tour.addStep({
       text: '點擊設定來調整地區',
       attachTo: {
@@ -128,7 +151,38 @@ function first_time_tour() {
         on: 'top',
       },
     })
+    tour.addStep({
+      text: '選取地區',
+      attachTo: {
+        element: '#cwb_location_select',
+        on: 'bottom',
+      },
+      scrollTo: false,
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next,
+        },
+      ],
+    })
+    tour.addStep({
+      text: '切換語言',
+      attachTo: {
+        element: '#lang_select',
+        on: 'bottom',
+      },
+      scrollTo: false,
+      buttons: [
+        {
+          text: 'Complete',
+          action: tour.next,
+        },
+      ],
+    })
     tour.start()
+    tour.on('cancel', () => {
+      document.getElementById('configButton').removeEventListener('click', myClick)
+    })
     localStorage.setItem('alsoweather_app_seen_tour', 'true')
   }
 }

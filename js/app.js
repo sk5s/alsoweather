@@ -240,6 +240,7 @@ async function fetch_cwb(url) {
       })
   } catch (error) {
     console.log(error)
+    alert_modal(error.message, default_prompt_last_time)
   }
 }
 
@@ -256,7 +257,7 @@ async function fetch_quote(url) {
         fillin_quote(data)
       })
   } catch (error) {
-    alert_modal(error.message, default_prompt_last_time)
+    // alert_modal(error.message, default_prompt_last_time)
   }
 }
 
@@ -329,8 +330,8 @@ function restore_app_lang() {
     user_selected_lang = data
     lang_select.value = data
   } else {
-    user_selected_lang = 'en'
-    lang_select.value = 'en'
+    user_selected_lang = 'zh-TW'
+    lang_select.value = 'zh-TW'
   }
 }
 
@@ -510,35 +511,70 @@ function generate_location_option(data_element) {
 
 // use now weather state object to generate html code
 function generate_now_weather(nowstate) {
+  // let wxci = handleWeatherWxCIImage(nowstate.Wx, nowstate.CI)
+  let wxci = {
+    wx: {
+      img: '',
+    },
+    ci: {
+      img: '',
+    },
+  }
   let div = document.createElement('div')
+  let wximgHtml = ``
+  let ciimgHtml = ``
+  if (wxci && wxci.wx.img) {
+    wximgHtml = `
+<img src="${wxci.wx.img}" alt="${nowstate.Wx}" style="max-width:100px" /><br>
+<span style="font-weight:lighter;width:100%;" class="is-size-7">
+  ${wxci.wx.attribution}
+</span>
+    `
+  }
+  if (wxci && wxci.ci.img) {
+    ciimgHtml = `
+<img src="${wxci.ci.img}" alt="${nowstate.CI}" style="max-width:100px" /><br>
+<span style="font-weight:lighter;width:100%;" class="is-size-7">
+  ${wxci.ci.attribution}
+</span>
+    `
+  }
+  let additional_pop_class = ''
+  let additional_maxt_class = ''
+  let additional_mint_class = ''
+  if (nowstate.PoP >= 70) additional_pop_class += ' has-text-danger'
+  if (nowstate.MaxT >= 30) additional_maxt_class += ' has-text-danger'
+  if (nowstate.MinT <= 12) additional_maxt_class += ' has-text-info'
   div.innerHTML += `
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
         <p class="heading" data-i18n-key="PoP">${i18n_get('PoP')}</p>
-        <p class="title"><i class="fas fa-cloud-showers-heavy"></i> ${nowstate.PoP}%</p>
+        <p class="title${additional_pop_class}"><i class="fas fa-cloud-showers-heavy"></i> ${nowstate.PoP}%</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading" data-i18n-key="MaxT">${i18n_get('MaxT')}</p>
-        <p class="title"><i class="fas fa-chevron-up"></i> ${nowstate.MaxT}°C</p>
+        <p class="title${additional_maxt_class}"><i class="fas fa-chevron-up"></i> ${nowstate.MaxT}°C</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading" data-i18n-key="MinT">${i18n_get('MinT')}</p>
-        <p class="title"><i class="fas fa-chevron-down"></i> ${nowstate.MinT}°C</p>
+        <p class="title${additional_mint_class}"><i class="fas fa-chevron-down"></i> ${nowstate.MinT}°C</p>
       </div>
     </div>
   </nav>
   <div class="tile is-ancestor">
-    <div class="tile is-12 is-parent">
-      <div class="tile is-child box">
+    <div class="tile is-parent is-12" style="gap: 12px;">
+      <div class="tile is-child box has-text-centered" style="margin-bottom:6px !important;">
         <p class="title">${nowstate.Wx}</p>
+        ${wximgHtml}
       </div>
-      <div class="tile is-child box">
+      <div class="tile is-child box has-text-centered" style="margin-bottom:6px !important;">
         <p class="title">${nowstate.CI}</p>
+        ${ciimgHtml}
       </div>
     </div>
   </div>
@@ -639,4 +675,37 @@ function darkmode_init() {
 
 function toggle_darkmode() {
   darkmode.toggle()
+}
+
+function handleWeatherWxCIImage(Wx, CI) {
+  let ciImg = ''
+  let ciAttribution = ''
+  let wxImg = ''
+  let wxAttribution = ''
+  if (CI == '舒適') {
+    ciImg = './icon/ci/thermometer.png'
+    ciAttribution = `<a href="https://www.flaticon.com/free-icons/thermal" title="Thermal icons">Thermal icons created by Flat Icons - Flaticon</a>`
+  }
+  if (Wx == '陰短暫雨') {
+    wxImg = './icon/ci/cloudy.png'
+    wxAttribution = `<a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by iconixar - Flaticon</a>`
+  }
+  return {
+    wx: {
+      img: wxImg,
+      attribution: wxAttribution,
+    },
+    ci: {
+      img: ciImg,
+      attribution: ciAttribution,
+    },
+  }
+}
+
+function openRadarModal() {
+  let modal = document.getElementById('radar_iframe_modal')
+  let iframe = document.getElementById('radar_iframe')
+  let url = 'https://www.cwb.gov.tw/V8/C/W/OBS_Radar.html'
+  iframe.src = url
+  modal.classList.add('is-active')
 }

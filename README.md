@@ -36,7 +36,7 @@
   <p align="center">
     簡易天氣 app，有 mobile、desktop 版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示
     <br />
-    <a href="https://github.com/sk5s/alsoweather"><strong>Explore the docs »</strong></a>
+    <a href="https://sk5s.cyou/alsoweather/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://sk5s.cyou/alsoweather/">Web app</a>

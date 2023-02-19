@@ -1,4 +1,5 @@
 let weather_chart_element
+let delayed
 
 const CHART_COLORS = {
   red: 'rgb(255, 99, 132)',
@@ -9,7 +10,7 @@ const CHART_COLORS = {
   purple: 'rgb(153, 102, 255)',
   grey: 'rgb(201, 203, 207)',
 }
-const line_chart_border_width = 7
+const line_chart_border_width = 3
 
 function generate_weather_chart_data(weatherElement) {
   const time = (str) => {
@@ -52,7 +53,11 @@ function generate_weather_chart_data(weatherElement) {
         {
           label: i18n_get('MaxT'),
           data: [],
+          pointStyle: 'rectRounded',
+          pointRadius: 8,
+          pointHoverRadius: 12,
           borderColor: CHART_COLORS.red,
+          backgroundColor: CHART_COLORS.red,
           borderWidth: line_chart_border_width,
         },
       ]
@@ -60,7 +65,7 @@ function generate_weather_chart_data(weatherElement) {
         const element = weatherElement[i].time[n]
         maxt_chart_image_data.datasets[0].data.push(element.parameter.parameterName)
       }
-      console.log(JSON.stringify(maxt_chart_image_data))
+      // console.log(JSON.stringify(maxt_chart_image_data))
     }
     // 如果是最小溫度
     if (weatherElementName == 'MinT') {
@@ -68,7 +73,11 @@ function generate_weather_chart_data(weatherElement) {
         {
           label: i18n_get('MinT'),
           data: [],
+          pointStyle: 'rectRounded',
+          pointRadius: 8,
+          pointHoverRadius: 12,
           borderColor: CHART_COLORS.blue,
+          backgroundColor: CHART_COLORS.blue,
           borderWidth: line_chart_border_width,
         },
       ]
@@ -76,7 +85,7 @@ function generate_weather_chart_data(weatherElement) {
         const element = weatherElement[i].time[n]
         mint_chart_image_data.datasets[0].data.push(element.parameter.parameterName)
       }
-      console.log(JSON.stringify(mint_chart_image_data))
+      // console.log(JSON.stringify(mint_chart_image_data))
     }
   }
   if (weather_chart_element != undefined) weather_chart_element.destroy()
@@ -89,15 +98,28 @@ function generate_weather_chart_data(weatherElement) {
       datasets: [maxt_chart_image_data.datasets[0], mint_chart_image_data.datasets[0]],
     },
     options: {
+      responsive: true,
+      animation: {
+        onComplete: () => {
+          delayed = true
+        },
+        delay: (context) => {
+          let delay = 0
+          if (context.type === 'data' && context.mode === 'default' && !delayed) {
+            delay = context.dataIndex * 300 + context.datasetIndex * 100
+          }
+          return delay
+        },
+      },
       plugins: {
         title: {
           display: true,
-          text: '36h天氣預測',
+          text: '36h 天氣預測',
         },
       },
     },
   }
-  console.dir(config)
+  // console.dir(config)
   weather_chart_element = chart(weather_chart_canvas, config)
 }
 

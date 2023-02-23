@@ -36,7 +36,7 @@
   <p align="center">
     簡易天氣 app，有 mobile、desktop 版本。最大溫度折線圖、最小溫度折線圖、地區記憶，chart.js，改善時間顯示
     <br />
-    <a href="https://github.com/sk5s/alsoweather"><strong>Explore the docs »</strong></a>
+    <a href="https://sk5s.cyou/alsoweather/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://sk5s.cyou/alsoweather/">Web app</a>
@@ -74,22 +74,28 @@
 
 ## About The Project
 
-[![vlcsnap-2022-02-09-09h53m14s678](https://user-images.githubusercontent.com/92437055/153109682-8895e6fd-02c1-4b14-89fc-c317fc72e6d6.png)](https://vimeo.com/675285657)
+<a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+
+<!-- [![vlcsnap-2022-02-09-09h53m14s678](https://user-images.githubusercontent.com/92437055/153109682-8895e6fd-02c1-4b14-89fc-c317fc72e6d6.png)](https://vimeo.com/675285657)
 
 - Video(tw): [https://vimeo.com/675285969](https://vimeo.com/675285969)
-- Video(en): [https://vimeo.com/675285657](https://vimeo.com/675285657)
+- Video(en): [https://vimeo.com/675285657](https://vimeo.com/675285657) -->
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-|                                                                                                                                             |                                                                                                                                               |
+<!-- |                                                                                                                                             |                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![127 0 0 1_5500_(Pixel 2)](https://user-images.githubusercontent.com/92437055/144749918-593c83bc-72eb-4563-92ee-1fc27e7396ef.png)            | ![127 0 0 1_5500_(Pixel 2) (1)](https://user-images.githubusercontent.com/92437055/144749956-2659abf2-e661-42cb-bf65-81378517914a.png)        |
 | ![pwa](https://user-images.githubusercontent.com/92437055/144704083-8ee76313-ce13-4f4c-8216-4c1c1a323b71.png)                                 | ![www sk5s cyou_alsoweather_(Pixel 2)](https://user-images.githubusercontent.com/92437055/140604816-a5b62528-867d-41de-9ec0-82835198dff6.png) |
-| ![www sk5s cyou_alsoweather_(Pixel 2)](https://user-images.githubusercontent.com/92437055/140604795-ef4db4e1-d5cd-4eff-87a7-a8323e0e9832.png) | ![www sk5s cyou_alsoweather_(Pixel 2)](https://user-images.githubusercontent.com/92437055/140604775-072b01a6-6982-4285-896c-77b4bdb7204b.png) |
+| ![www sk5s cyou_alsoweather_(Pixel 2)](https://user-images.githubusercontent.com/92437055/140604795-ef4db4e1-d5cd-4eff-87a7-a8323e0e9832.png) | ![www sk5s cyou_alsoweather_(Pixel 2)](https://user-images.githubusercontent.com/92437055/140604775-072b01a6-6982-4285-896c-77b4bdb7204b.png) | -->
+
+|![1](https://user-images.githubusercontent.com/92437055/219948348-65581d72-13fe-494f-8a2a-cf1281a89d8f.jpg)|![2](https://user-images.githubusercontent.com/92437055/219948374-9c97863d-bec2-477b-9b54-e1a6b0712b02.jpg)|
+|-|-|
+|![3](https://user-images.githubusercontent.com/92437055/219948379-123fdba8-4fbe-4d7f-8ff3-c8d448435520.jpg)|![4](https://user-images.githubusercontent.com/92437055/219948385-0fd10aff-a10c-4478-acca-90b4ea638cb4.jpg)|
 
 With alsoweather, you can get cwb weather information easily.
 
-![splash](https://upload.cc/i1/2022/01/22/boRBjm.jpg)
+![splash](https://raw.githubusercontent.com/sk5s/alsoweather-docs/main/img/boRBjm.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -120,10 +126,10 @@ _[Documentation](https://sk5s.cyou/alsoweather/docs/)_
 
 ## Roadmap
 
-- [ ] Instruction
+- [x] Instruction
 - [ ] Weather recommendation
 - [ ] User Login
-- [ ] Clear cookie preference
+- [x] Clear cookie preference
 - [ ] Update dark mode color
 - [ ] Pwa update available and auto update
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0" />
     <title>alsoweather</title>
     <link rel="shortcut icon" type="image/jpg" href="icon/icon.png" />
     <!-- css -->
@@ -66,11 +66,27 @@
         <span class="ml-3" data-i18n-key="refresh">Refresh</span>
       </button>
 
+      <!-- week forecast -->
+      <button
+        id="week_forecast_button"
+        class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+        onclick="goToWeekForecast()"
+      >
+        <span class="icon is-small">
+          <i class="fab fa-weebly"></i>
+        </span>
+        <span class="ml-3" data-i18n-key="week_forecast">Week forecast</span>
+      </button>
+
       <!-- SpeechSynthesis button -->
       <div id="speechSynthesis_container"></div>
 
       <!-- radar -->
-      <button class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3" onclick="openRadarModal()">
+      <button
+        class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
+        id="radar_button"
+        onclick="openRadarModal()"
+      >
         <span class="icon is-small">
           <i class="fas fa-cloud"></i>
         </span>
@@ -207,6 +223,7 @@
             class="button is-large is-success is-outlined is-fullwidth mt-3 mb-3"
             href="https://sk5s.cyou/alsoweather/docs/#/guide/install-pwa"
             target="_blank"
+            id="installPwa"
           >
             <span class="icon is-small">
               <i class="fas fa-question-circle"></i>

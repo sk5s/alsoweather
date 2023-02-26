@@ -21,6 +21,8 @@ let i18n_resources = {
       'reinstall-pwa': 'Reinstall PWA',
       'toggle-darkmode': 'Toggle darkmode',
       'select-voice-in-config-section-first': 'Select voice in config section first!',
+      week_forecast: 'Week forecast',
+      back: 'Back',
     },
   },
   zh: {
@@ -45,6 +47,8 @@ let i18n_resources = {
       'select-voice-in-config-section-first': '請先在設定中選擇聲音！',
       'see-tour': '看導覽',
       radar: '雷達回波',
+      week_forecast: '一周天氣',
+      back: '返回',
     },
   },
 }

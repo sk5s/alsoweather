@@ -59,6 +59,14 @@ canvas {
   color: #d2f4ea;
 }
 
+.darkmode--activated footer div {
+  color: #d2f4ea;
+}
+
+.darkmode--activated .content .has-text-grey {
+  color: #d2f4ea !important;
+}
+
 .darkmode--activated .has-background-success-light {
   background-color: #0d503c !important;
 }

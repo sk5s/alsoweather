@@ -544,7 +544,7 @@ function generate_now_weather(nowstate) {
   let additional_mint_class = ''
   if (nowstate.PoP >= 70) additional_pop_class += ' has-text-danger'
   if (nowstate.MaxT >= 30) additional_maxt_class += ' has-text-danger'
-  if (nowstate.MinT <= 12) additional_maxt_class += ' has-text-info'
+  if (nowstate.MinT <= 12) additional_mint_class += ' has-text-info'
   div.innerHTML += `
   <nav class="level">
     <div class="level-item has-text-centered">
@@ -708,4 +708,9 @@ function openRadarModal() {
   let url = 'https://www.cwb.gov.tw/V8/C/W/OBS_Radar.html'
   iframe.src = url
   modal.classList.add('is-active')
+}
+
+function goToWeekForecast() {
+  console.log(`./week?q=${cwb_location_select_value}`)
+  window.location.assign(`./week/?q=${cwb_location_select_value}`)
 }

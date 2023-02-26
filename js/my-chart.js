@@ -12,7 +12,16 @@ const CHART_COLORS = {
 }
 const line_chart_border_width = 3
 
+if (localStorage.getItem('darkmode') == 'true') {
+  console.log('generate chart in dark mode')
+  Chart.defaults.color = '#fff'
+  Chart.defaults.borderColor = '#6f6f6f'
+} else {
+  console.log('generate chart in light mode')
+}
+
 function generate_weather_chart_data(weatherElement) {
+  // localStorage.getItem("")
   const time = (str) => {
     let m = new Date(str)
     let dateString = `${m.getUTCMonth() + 1}/${m.getUTCDate()} ${m.getUTCHours()}${i18n_get('o_clock')}`

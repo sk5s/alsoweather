@@ -237,6 +237,13 @@ async function fetch_cwb(url) {
         generate_weather_chart_data(data_all.data[data_all.location_index].weatherElement)
         fillin_weather(generate_now_weather(parsed_cwb_data.now))
         generate_now_weather_speech_script(parsed_cwb_data.now)
+        let whatToWear = document.getElementById('whatToWear')
+        whatToWear.innerHTML += `<i class="fas fa-comment-alt"></i> `
+        whatToWear.innerHTML += whatToWearNow(
+          parsed_cwb_data.now.MaxT,
+          parsed_cwb_data.now.MinT,
+          parsed_cwb_data.now.PoP
+        )
       })
   } catch (error) {
     console.log(error)
@@ -543,8 +550,8 @@ function generate_now_weather(nowstate) {
   let additional_maxt_class = ''
   let additional_mint_class = ''
   if (nowstate.PoP >= 70) additional_pop_class += ' has-text-danger'
-  if (nowstate.MaxT >= 30) additional_maxt_class += ' has-text-danger'
-  if (nowstate.MinT <= 12) additional_mint_class += ' has-text-info'
+  if (nowstate.MaxT >= 28) additional_maxt_class += ' has-text-danger'
+  if (nowstate.MinT <= 15) additional_mint_class += ' has-text-info'
   div.innerHTML += `
   <nav class="level">
     <div class="level-item has-text-centered">
@@ -712,5 +719,30 @@ function openRadarModal() {
 
 function goToWeekForecast() {
   console.log(`./week?q=${cwb_location_select_value}`)
-  window.location.assign(`./week/index.html?q=${cwb_location_select_value}`)
+  window.location.assign(`./week/?q=${cwb_location_select_value}`)
+}
+
+function whatToWearNow(high, low, pop) {
+  // https://github.com/helenzhou6/Weather-to-wear/
+  const genClothingMsg = (lowestTemp, highestTemp) => {
+    if (lowestTemp < 5 && highestTemp < 10) {
+      return '套頭毛衣'
+    } else if (lowestTemp > 20 && highestTemp > 20) {
+      return '短褲'
+    } else if (lowestTemp < 20 && highestTemp > 20) {
+      return '短褲和套頭毛衣'
+    } else {
+      return '不會太薄也不會太厚的衣服'
+    }
+  }
+  const genCoatMsg = (precipProbability, precipType) => {
+    if (precipProbability < 20) {
+      return `不用帶${precipType}衣！`
+    } else if (precipProbability > 70) {
+      return `帶著${precipType}衣出門吧！（你有 ${100 - precipProbability}% 的機會不會被雨淋）`
+    } else {
+      return `最好帶著${precipType}衣（你有 ${100 - precipProbability}% 的機會不會被雨淋）`
+    }
+  }
+  return `可以穿<b>${genClothingMsg(low, high)}</b>並且<b>${genCoatMsg(pop, '雨')}</b>`
 }

@@ -76,7 +76,7 @@
 
 <a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
 
-Alsoweather是一款直觀且使用者友好的天氣應用程式，可提供臺灣的即時天氣預報。使用此應用程式，您可以一目了然地獲得詳細的天氣資訊，包括溫度，PoP等。您還可以查看未來幾天的天氣預報，並隨時瞭解最新的天氣狀況。該應用程式還具有雷達地圖，顯示臺灣當前的天氣狀況。通過Alsoweather獲取最準確和最新的天氣資訊！
+> Alsoweather是一款直觀且使用者友好的天氣應用程式，可提供臺灣的即時天氣預報。使用此應用程式，您可以一目了然地獲得詳細的天氣資訊，包括溫度，PoP等。您還可以查看未來幾天的天氣預報，並隨時瞭解最新的天氣狀況。該應用程式還具有雷達地圖，顯示臺灣當前的天氣狀況。通過Alsoweather獲取最準確和最新的天氣資訊！
 
 
 <!-- [![vlcsnap-2022-02-09-09h53m14s678](https://user-images.githubusercontent.com/92437055/153109682-8895e6fd-02c1-4b14-89fc-c317fc72e6d6.png)](https://vimeo.com/675285657)

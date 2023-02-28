@@ -719,7 +719,7 @@ function openRadarModal() {
 
 function goToWeekForecast() {
   console.log(`./week?q=${cwb_location_select_value}`)
-  window.location.assign(`./week/?q=${cwb_location_select_value}`)
+  window.location.assign(`./week/index.html?q=${cwb_location_select_value}`)
 }
 
 function whatToWearNow(high, low, pop) {

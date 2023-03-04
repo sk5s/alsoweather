@@ -149,9 +149,11 @@ async function fetch_cwb(url) {
         console.log(locationIndex)
         if (locationIndex == -1) {
           console.log('location error! Please choose new one')
+          document.getElementById('location_h1').innerHTML = '請選取一個地區'
           return
         }
         console.log(cwbData[locationIndex].weatherElement)
+        document.getElementById('location_h1').innerHTML = `${getUrlLocationName()} ${cwb_location_select_value}`
         cwbData[locationIndex].weatherElement[0].time
         let mainSwiperWrapper = document.getElementById('main-swiper-wrapper')
         mainSwiperWrapper.innerHTML = ``
@@ -175,6 +177,7 @@ async function fetch_cwb(url) {
           </div>
           `
         }
+        generateWeekWeatherChart(cwbData[locationIndex].weatherElement)
         const swiper = new Swiper('.swiper', {
           // Optional parameters
           direction: 'horizontal',

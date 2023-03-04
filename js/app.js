@@ -105,10 +105,24 @@ function first_time_tour() {
         },
       ],
     })
+    // tour.addStep({
+    //   text: '點擊重新整理天氣資料',
+    //   attachTo: {
+    //     element: '#refresh_button',
+    //     on: 'top',
+    //   },
+    //   scrollTo: false,
+    //   buttons: [
+    //     {
+    //       text: 'Next',
+    //       action: tour.next,
+    //     },
+    //   ],
+    // })
     tour.addStep({
-      text: '點擊重新整理天氣資料',
+      text: '點擊此按鈕可以到一周天氣的頁面',
       attachTo: {
-        element: '#refresh_button',
+        element: '#week_forecast_button',
         on: 'top',
       },
       scrollTo: false,
@@ -165,20 +179,20 @@ function first_time_tour() {
         },
       ],
     })
-    tour.addStep({
-      text: '切換語言',
-      attachTo: {
-        element: '#lang_select',
-        on: 'bottom',
-      },
-      scrollTo: false,
-      buttons: [
-        {
-          text: 'Complete',
-          action: tour.next,
-        },
-      ],
-    })
+    // tour.addStep({
+    //   text: '切換語言',
+    //   attachTo: {
+    //     element: '#lang_select',
+    //     on: 'bottom',
+    //   },
+    //   scrollTo: false,
+    //   buttons: [
+    //     {
+    //       text: 'Complete',
+    //       action: tour.next,
+    //     },
+    //   ],
+    // })
     tour.start()
     tour.on('cancel', () => {
       document.getElementById('configButton').removeEventListener('click', myClick)
@@ -238,7 +252,7 @@ async function fetch_cwb(url) {
         fillin_weather(generate_now_weather(parsed_cwb_data.now))
         generate_now_weather_speech_script(parsed_cwb_data.now)
         let whatToWear = document.getElementById('whatToWear')
-        whatToWear.innerHTML += `<i class="fas fa-comment-alt"></i> `
+        whatToWear.innerHTML = `<i class="fas fa-comment-alt"></i> `
         whatToWear.innerHTML += whatToWearNow(
           parsed_cwb_data.now.MaxT,
           parsed_cwb_data.now.MinT,

@@ -34,17 +34,27 @@
     <!-- main content -->
     <div class="container mt-3 px-3" style="max-width: 600px; min-height: 80vh">
       <!-- back button -->
-      <a class="button is-primary" href="../" data-i18n-key="back" id="back-button"> Back </a>
+      <a class="button is-primary is-large" href="../" data-i18n-key="back" id="back-button"> Back </a>
 
       <!-- location -->
+      <h1 class="title is-3 pt-3" id="location_h1">...</h1>
       <div class="control has-icons-left mt-3 mb-3">
-        <div class="select is-large is-fullwidth">
+        <div class="select is-fullwidth">
           <select id="cwb_location_select">
             <option value="" data-i18n-key="choose-location" disabled selected>choose location</option>
           </select>
         </div>
-        <div class="icon is-large is-left">
+        <div class="icon is-left">
           <i class="fas fa-map-marker-alt"></i>
+        </div>
+      </div>
+
+      <!-- weather chart -->
+      <div class="card has-background-success-light mt-3 mb-3">
+        <div class="card-content" id="step2">
+          <div class="content" id="weather_chart_inner_content">
+            <canvas id="weather_chart_canvas" width="400" height="320"></canvas>
+          </div>
         </div>
       </div>
 

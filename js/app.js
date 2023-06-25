@@ -753,9 +753,9 @@ function whatToWearNow(high, low, pop) {
     if (precipProbability < 20) {
       return `不用帶${precipType}衣！`
     } else if (precipProbability > 70) {
-      return `帶著${precipType}衣出門吧！（你有 ${100 - precipProbability}% 的機會不會被雨淋）`
+      return `帶著${precipType}衣出門吧！`
     } else {
-      return `最好帶著${precipType}衣（你有 ${100 - precipProbability}% 的機會不會被雨淋）`
+      return `最好帶著${precipType}衣`
     }
   }
   return `可以穿<b>${genClothingMsg(low, high)}</b>並且<b>${genCoatMsg(pop, '雨')}</b>`

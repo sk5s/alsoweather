@@ -67,6 +67,7 @@
         </span>
         <span class="ml-3" data-i18n-key="refresh">Refresh</span>
       </button> -->
+      <div id="refresh_div"></div>
 
       <!-- week forecast -->
       <button
@@ -77,7 +78,7 @@
         <span class="icon is-small">
           <i class="fab fa-weebly"></i>
         </span>
-        <span class="ml-3" data-i18n-key="week_forecast">Week forecast</span>
+        <span class="ml-3" data-i18n-key="week_forecast">一周天氣</span>
       </button>
 
       <!-- SpeechSynthesis button -->
@@ -92,13 +93,13 @@
         <span class="icon is-small">
           <i class="fas fa-cloud"></i>
         </span>
-        <span class="ml-3" data-i18n-key="radar">Radar</span>
+        <span class="ml-3" data-i18n-key="radar">雷達回波</span>
       </button>
       <div class="modal" id="radar_iframe_modal" data-modal-name="radar">
         <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="radar"></div>
         <div class="modal-card" style="min-height: 99%">
           <header class="modal-card-head">
-            <p class="modal-card-title" data-i18n-key="radar">Radar</p>
+            <p class="modal-card-title" data-i18n-key="radar">雷達回波</p>
             <button class="delete" aria-label="close" onclick="close_modal(this)" data-modal-to-close="radar"></button>
           </header>
           <section class="modal-card-body" style="padding: 0">
@@ -128,7 +129,7 @@
           <span class="card-header-icon">
             <i class="fas fa-angle-double-right"></i>
           </span>
-          <span class="card-header-title" data-i18n-key="quote"> Quote </span>
+          <span class="card-header-title" data-i18n-key="quote">佳句</span>
         </div>
         <div class="card-content">
           <div class="content" id="quote_block_inner_content">
@@ -154,7 +155,7 @@
           <span class="icon is-small">
             <i class="fas fa-cog"></i>
           </span>
-          <span data-i18n-key="config" class="ml-3">Config</span>
+          <span data-i18n-key="config" class="ml-3">設定</span>
         </button>
       </div>
     </div>
@@ -165,7 +166,7 @@
       <div class="modal-background" onclick="close_modal(this)" data-modal-to-close="config"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title" data-i18n-key="config">Config</p>
+          <p class="modal-card-title" data-i18n-key="config">設定</p>
           <button class="delete" aria-label="close" onclick="close_modal(this)" data-modal-to-close="config"></button>
         </header>
         <section class="modal-card-body">

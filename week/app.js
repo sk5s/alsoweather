@@ -118,7 +118,7 @@ function getDataService() {
       cityUrl = 'F-D0047-031'
       break
   }
-  fetch_cwb(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/${cityUrl}?Authorization=${CWB_KEY}&format=JSON`)
+  fetch_cwb(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/${cityUrl}?Authorization=${CWB_KEY}&format=JSON`)
 }
 
 // fetch cwb api

@@ -4,7 +4,7 @@
 // now in key.js
 
 // api url
-const CWB_API = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${CWB_KEY}&format=JSON`
+const CWB_API = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${CWB_KEY}&format=JSON`
 // api url
 const QUOTE_API = `https://api.quotable.io/random`
 
@@ -726,7 +726,7 @@ function handleWeatherWxCIImage(Wx, CI) {
 function openRadarModal() {
   let modal = document.getElementById('radar_iframe_modal')
   let iframe = document.getElementById('radar_iframe')
-  let url = 'https://www.cwb.gov.tw/V8/C/W/OBS_Radar.html'
+  let url = 'https://www.cwa.gov.tw/V8/C/W/OBS_Radar.html'
   iframe.src = url
   modal.classList.add('is-active')
 }

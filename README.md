@@ -39,7 +39,7 @@
     <a href="https://sk5s.cyou/alsoweather/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://sk5s.cyou/alsoweather/">Web app</a>
+    <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather">Download</a>
     ·
     <a href="https://github.com/sk5s/alsoweather/issues">Report Bug</a>
     ·
@@ -74,7 +74,7 @@
 
 ## About The Project
 
-<a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+<a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
 
 > Alsoweather是一款直觀且使用者友好的天氣應用程式，可提供臺灣的即時天氣預報。使用此應用程式，您可以一目了然地獲得詳細的天氣資訊，包括溫度，PoP等。您還可以查看未來幾天的天氣預報，並隨時瞭解最新的天氣狀況。該應用程式還具有雷達地圖，顯示臺灣當前的天氣狀況。通過Alsoweather獲取最準確和最新的天氣資訊！
 

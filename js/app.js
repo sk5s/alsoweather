@@ -261,7 +261,19 @@ async function fetch_cwb(url) {
       })
   } catch (error) {
     console.log(error)
-    alert_modal(error.message, default_prompt_last_time)
+    if (error.message.toLowerCase() == "failed to fetch"){
+      alert_modal(`
+      <h3 class="title is-4">網頁版將停止服務</h3>
+      <h2 class="title is-2">Alsoweather Android 版本現已上架</h2>
+      <p>Alsoweather 是一款直觀且使用者友好的天氣應用程式，可提供臺灣的即時天氣預報。使用此應用程式，您可以一目了然地獲得詳細的天氣資訊，包括溫度，PoP等。您還可以查看未來幾天的天氣預報，並隨時瞭解最新的天氣狀況。該應用程式還具有雷達地圖，顯示臺灣當前的天氣狀況。通過 Alsoweather 獲取最準確和最新的天氣資訊！</p>
+      <div class="py-2">
+        <img width="64" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather" />
+        <a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.alsoweather'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+      </div>
+      `)
+    } else {
+      alert_modal(error.message, default_prompt_last_time)
+    }
   }
 }
 

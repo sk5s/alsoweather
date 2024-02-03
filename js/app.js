@@ -49,7 +49,7 @@ lang_select.addEventListener('input', lang_input_service)
 
 // init
 document.addEventListener('DOMContentLoaded', () => {
-  first_time_tour()
+  //first_time_tour()
   restore_location()
   restore_speech_voice()
   restore_app_lang()

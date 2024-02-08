@@ -96,7 +96,7 @@
 |-|-|
 |![3](https://user-images.githubusercontent.com/92437055/219948379-123fdba8-4fbe-4d7f-8ff3-c8d448435520.jpg)|![4](https://user-images.githubusercontent.com/92437055/219948385-0fd10aff-a10c-4478-acca-90b4ea638cb4.jpg)|
 
-With alsoweather, you can get cwb weather information easily.
+With alsoweather, you can get Taiwan cwa weather information easily.
 
 ![splash](https://raw.githubusercontent.com/sk5s/alsoweather-docs/main/img/boRBjm.png)
 

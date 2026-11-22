@@ -49,7 +49,7 @@
 
 <div id="top"></div>
 
-[![sk5s site](https://sk5s.cyou/sk5s/img/sk5s-project-bar.png)](https://sk5s.cyou/)
+[![sk5s site](https://me.sk5s.org/img/sk5s-project-bar.png)](https://sk5s.com/)
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -192,7 +192,7 @@ Project Link: [https://github.com/sk5s/alsoweather](https://github.com/sk5s/also
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[![opensource](https://forthebadge.com/images/badges/open-source.svg)](https://sk5s.cyou/)
+[![opensource](https://forthebadge.com/images/badges/open-source.svg)](https://sk5s.com/)
 
 ```
      _    ____                        _           _
